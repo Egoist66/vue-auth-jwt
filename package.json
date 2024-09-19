@@ -1,0 +1,38 @@
+{
+  "name": "vue-jwt",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "run-p type-check \"build-only {@}\" --",
+    "preview": "vite preview",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --build --force",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@vueuse/core": "^11.1.0",
+    "axios": "^1.7.7",
+    "dayjs": "^1.11.13",
+    "firebase": "^10.13.2",
+    "pinia": "^2.2.2",
+    "vue": "^3.5.6",
+    "vue-router": "^4.4.5"
+  },
+  "devDependencies": {
+    "@tsconfig/node20": "^20.1.4",
+    "@types/node": "^20.16.5",
+    "@vitejs/plugin-vue": "^5.1.4",
+    "@vitejs/plugin-vue-jsx": "^4.0.1",
+    "@vue/tsconfig": "^0.5.1",
+    "npm-run-all2": "^6.2.3",
+    "sass": "^1.79.1",
+    "typescript": "~5.6.2",
+    "unplugin-vue-components": "^0.27.4",
+    "vite": "^5.4.6",
+    "vite-plugin-vue-devtools": "^7.4.5",
+    "vitest": "^2.1.1",
+    "vue-tsc": "^2.1.6"
+  }
+}
