@@ -6,9 +6,8 @@
 <template>
 
     <div  id="layout">
-        <div class="container">
+        <div  v-if="$slots.header" class="container">
            
-    
             <header>
             
                 <slot name="header"/>

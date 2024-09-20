@@ -1,10 +1,19 @@
+import { getAuth, type Auth } from "firebase/auth";
 import { Firestore, getFirestore } from "firebase/firestore";
 
+
 /**
- * Establishes a connection to the Firestore database.
+ * Establishes a connection to the Firestore database and the Firebase Authentication service.
  *
- * @return {Firestore} The Firestore instance.
+ * @return {{store: Firestore, auth: Auth}} An object containing the Firestore database and the Firebase Authentication service.
  */
-export const dbConnect = (): Firestore => {
-    return getFirestore()
+export const dbConnect = (): { store: Firestore; auth: Auth; } => {
+    const store = getFirestore();
+    const auth = getAuth();
+
+
+    return {
+        store,
+        auth
+    }
 }

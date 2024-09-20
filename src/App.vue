@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Layout from '@/components/layout/Layout.vue';
 
 
 
@@ -9,13 +10,16 @@
 
   <Layout>
 
-    <template #header>
-     
+  
+    <template #deafault>
+
+
+      <RouterView />
+
+
     </template>
 
-    <template #deafault>
-      
-    </template>
+    
 
   </Layout>
 

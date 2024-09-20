@@ -5,11 +5,11 @@ import { initializeApp } from "firebase/app";
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: "interviews-app-7bb81.firebaseapp.com",
-  projectId: "interviews-app-7bb81",
-  storageBucket: "interviews-app-7bb81.appspot.com",
-  messagingSenderId: "235756703376",
-  appId: "1:235756703376:web:6653d4d77d6ca0bb641215"
+  authDomain: "vue-auth-jwt.firebaseapp.com",
+  projectId: "vue-auth-jwt",
+  storageBucket: "vue-auth-jwt.appspot.com",
+  messagingSenderId: "383892379260",
+  appId: "1:383892379260:web:f297e906da6c1c6760dbf9"
 };
 
 

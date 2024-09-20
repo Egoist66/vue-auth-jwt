@@ -8,7 +8,7 @@ import type { App } from "vue";
 export const welcomePlugin = {
   install: (app: App) => {
     console.log(
-      "💫 Welcome to the interview app! Here you can track your job offerings and interview steps for more comfortable workflow"
+      "💫 Auth app inited"
     );
   },
 };
