@@ -1,14 +1,20 @@
 <script setup lang="ts">
+import Debug from '@/components/service/Debug.vue';
 import { useSignUp } from '@/composables/useSignUp';
+import { useAuthStore } from '@/store/auth';
+import { storeToRefs } from 'pinia';
 
 
   const {email, password, signup} = useSignUp()
-
+  const {userData} = storeToRefs(useAuthStore())
 
 </script>
 
 <template>
   <div>
+    <Debug visible :state="userData" />
+
+    
     <h2>Sign Up</h2>
     <form @submit.prevent="signup" class="flex flex-column gap-3">
       <!-- <Message v-if="authStore.error" severity="warn">{{ authStore.error }}</Message> -->

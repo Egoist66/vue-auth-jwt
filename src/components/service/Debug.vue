@@ -1,5 +1,11 @@
 <script setup lang="ts">
 
+/**
+ * Debug component
+ * @displayName Debug
+ */
+
+ 
 defineProps<{state: any, visible: boolean}>()
 
 

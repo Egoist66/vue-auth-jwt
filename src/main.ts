@@ -30,7 +30,7 @@ app.use(createPinia())
 app.use(PrimeVue, {
     ripple: true,
 });
-app.use(setTheme('aura-light')('blue'))
+app.use(setTheme('aura-light')(localStorage.getItem('colorScheme') || 'blue'))
 
 app.use(router)
 app.use(welcomePlugin)
