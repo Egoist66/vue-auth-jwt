@@ -5,8 +5,10 @@ import { ref } from 'vue';
 
 type UserData = {
     email: string,
-    idToken: string,
-    refreshToken: string
+    accessToken: string,
+    userId: string,
+    refreshToken: string,
+    expiresIn: number
 }
 export const useAuthStore = defineStore('auth', () => {
 

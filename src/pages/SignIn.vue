@@ -9,7 +9,7 @@ import { useSignUp } from '@/composables/useSignUp';
 
 <template>
   <div>
-    <h2>Sign In</h2>
+    <h2>Login</h2>
     <form @submit.prevent="signup" class="flex flex-column gap-3">
       <!-- <Message v-if="authStore.error" severity="warn">{{ authStore.error }}</Message> -->
       <div class="p-inputgroup flex-1">
