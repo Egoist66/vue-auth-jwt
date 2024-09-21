@@ -23,7 +23,7 @@ export enum Statuses {
  */
 export const useStatuses = () => {
     const statuses = ref<Statuses>(Statuses.IDLE)
-    const error = ref<string | null>(null)
+    const error = ref<any>(null)
 
 
 
@@ -36,7 +36,7 @@ export const useStatuses = () => {
         setStatus(Statuses.SUCCESS)
     }
 
-    const setError = (e: string) => {
+    const setError = (e: any) => {
         setStatus(Statuses.ERROR)
         error.value = e
     }

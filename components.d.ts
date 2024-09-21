@@ -12,7 +12,9 @@ declare module 'vue' {
     Debug: typeof import('./src/components/service/Debug.vue')['default']
     InputText: typeof import('primevue/inputtext')['default']
     Layout: typeof import('./src/components/layout/Layout.vue')['default']
+    Message: typeof import('primevue/message')['default']
     NavBar: typeof import('./src/components/layout/NavBar.vue')['default']
+    Password: typeof import('primevue/password')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
