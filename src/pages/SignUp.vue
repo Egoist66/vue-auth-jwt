@@ -13,7 +13,7 @@ const buttonRule = computed(
 
 <template>
   <div>
-    Status: <Debug class="text-xl text-orange-400" visible :state="statuses" />
+    <!-- Status: <Debug class="text-xl text-orange-400" visible :state="statuses" /> -->
 
     <h2>Sign Up</h2>
     <form @submit.prevent="async () => await auth('signUp')" class="flex flex-column gap-3">

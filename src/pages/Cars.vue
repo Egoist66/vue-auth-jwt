@@ -7,7 +7,7 @@
 <template>
     <h1 class="text-6xl font-bold text-center">Cars</h1>
 
-    <div class="bg-gray-100 flex flex-col justify-center">
+    <div class="flex flex-col justify-center">
         <div class="container mx-auto p-4">
             <div class="flex flex-wrap justify-center">
                 <div class="w-full p-4">

@@ -22,8 +22,12 @@
 }
 
 a {
-    color: rgb(55, 165, 255);
+    color: #6366F1;
     font-size: 18px;
+}
+
+nav a:hover {
+    color: #8385ff !important;
 }
 
 .active {
