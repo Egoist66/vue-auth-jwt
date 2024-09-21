@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Layout from '@/components/layout/Layout.vue';
+import AppHeader from './components/layout/AppHeader.vue';
 
 
 
@@ -9,6 +10,13 @@ import Layout from '@/components/layout/Layout.vue';
 
 
   <Layout>
+
+    <template #header>
+
+      <AppHeader />
+
+
+    </template> 
 
   
     <template #deafault>

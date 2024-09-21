@@ -44,7 +44,7 @@ const router = createRouter({
       meta: {
         title: 'Home'
       },
-      component: () => import('@/pages/HomeView.vue')
+      component: () => import('@/pages/Home.vue')
     },
     {
       path: '/signup',
@@ -63,6 +63,14 @@ const router = createRouter({
         title: 'Sign In'
       },
       component: () => import('@/pages/SignIn.vue')
+    },
+    {
+      path: '/cars',
+      name: 'cars',
+      meta: {
+        title: 'Cars'
+      },
+      component: () => import('@/pages/Cars.vue')
     },
 ],
 

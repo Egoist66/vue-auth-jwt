@@ -7,7 +7,7 @@ import NavBar from '@/components/layout/NavBar.vue'
 </script>
 
 <template>
-    <nav>
+    <nav class="flex justify-content-between gap-3">
 
 
         <NavBar />
