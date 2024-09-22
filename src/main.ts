@@ -5,7 +5,7 @@ import 'primeicons/primeicons.css'
 import './assets/main.scss'
 
 
-
+import 'primevue/resources/themes/aura-light-indigo/theme.css'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
@@ -26,14 +26,12 @@ const app = createApp(App);
 
 
 const wathStorePlugin = watchStorage(['user_creds'], [null], async () => await router.replace({name: 'signin'}))()
-const themePlugin = setTheme('aura-light')('indigo')
 
 
 app.use(welcomePlugin)
 app.use(router)
 app.use(createPinia())
 app.use(PrimeVue, {ripple: true});
-app.use(themePlugin)
 app.use(wathStorePlugin)
 app.use(globalApiIntercerptor)
 

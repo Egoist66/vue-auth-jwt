@@ -43,7 +43,7 @@ export const setTheme = (
         else {
           try {
             await import(
-              `primevue/resources/themes/${theme}.css`
+              `primevue/resources/themes/${theme}-${colorScheme}/theme.css`
             );
           } catch (error) {
             console.error(error);
