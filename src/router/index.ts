@@ -23,10 +23,10 @@ const validateRoutes = (
 
   document.title = to.meta.title as string 
 
-  if(userData.value?.userId && to.path === '/signup') {
+  if(userData.value?.accessToken && !to.meta.requiresAuth) {
     next({name: 'home'})
    
-  } else if(!userData.value?.userId && to.meta.requiresAuth) {
+  } else if(!userData.value?.accessToken && to.meta.requiresAuth) {
     next({name: 'signin'})
 
   } else {
