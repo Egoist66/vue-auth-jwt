@@ -27,7 +27,7 @@ export const setTheme = (
   theme: PrimeThemeOptions["theme"] = "aura-dark",
   options: OwnThemeParams = {}
 ) => {
-  const root = "../../node_modules/";
+  //const root = "../../node_modules/";
 
   return (colorScheme: PrimeThemeOptions["colorScheme"] = "indigo") => {
     return {
@@ -43,7 +43,7 @@ export const setTheme = (
         else {
           try {
             await import(
-              `${root}primevue/resources/themes/${theme}-${colorScheme}/theme.css`
+              `primevue/resources/themes/${theme}.css`
             );
           } catch (error) {
             console.error(error);
