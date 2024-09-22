@@ -1,34 +1,85 @@
 <script setup lang="ts">
+import { Statuses, useStatuses } from "@/composables/common/useStatuses";
+import { useAuthStore } from "@/store/auth";
+import { delay } from "@/utils/delay";
+import axios from "axios";
+import { ref, onMounted } from "vue";
 
+type Cars = {
+  name: string;
+  model: string;
+  image: string;
+  year: number;
+  hp: number;
+};
+
+const {
+    statuses, 
+    setLoading, 
+    setError, 
+    setSuccess, 
+    resetStatus 
+} = useStatuses();
+
+const car = ref<Cars>();
+
+const getCar = async () => {
+  try {
+    setError(null);
+    setLoading();
+
+    await delay(1000);
+
+    const { data } = await axios.get<Cars>(
+      "https://vue-auth-jwt-default-rtdb.europe-west1.firebasedatabase.app/cars.json"
+    );
+    if (data) {
+      console.log(data);
+      car.value = data;
+      setSuccess();
+    }
+  } 
+  catch (e) {
+    console.log(e);
+    setError(e);
+  } 
+  finally {
+    await delay(1500);
+    resetStatus();
+  }
+};
+
+onMounted(async () => {
+  await getCar();
+});
 </script>
 
-
-
 <template>
-    <h1 class="text-6xl font-bold text-center">Cars</h1>
+  <h1 class="text-6xl font-bold text-center">Cars</h1>
 
-    <div class="flex flex-col justify-center">
-        <div class="container mx-auto p-4">
-            <div class="flex flex-wrap justify-center">
-                <div class="w-full p-4">
-                    <img  src="https://imgd.aeplcdn.com/370x208/n/cw/ec/131135/xc90-exterior-right-front-three-quarter-105.jpeg" class="w-full rounded-lg shadow-lg" alt="Car">
-                    <p class="text-lg mt-4">Volvo XC90</p>
-                </div>
-                <div class="w-full p-4">
-                    <img src="https://media.istockphoto.com/id/905266220/photo/toyota-camry-in-motion.jpg?s=612x612&w=0&k=20&c=QdZEGEqUZz9PANdkgrJLENekgoW9H56gkD7PXzgsKDM=" class="w-full -m-4rounded-lg shadow-lg" alt="Car">
-                    <p class="text-lg mt-4">Toyota Camry</p>
-                </div>
-                <div class="w-full p-4">
-                    <img src="https://media.istockphoto.com/id/1437459394/photo/honda-civic-eco-lpg.jpg?s=612x612&w=0&k=20&c=ps551gHv0BecvpFSseMHKveecgASp_YkhpvpgEZSDP4=" class="w-full rounded-lg shadow-lg" alt="Car">
-                    <p class="text-lg mt-4">Honda Civic</p>
-                </div>
-            </div>
-        </div>
+  <div class="flex flex-col justify-center">
+    <div class="container mx-auto p-4">
+      <ProgressSpinner v-if="statuses === Statuses.LOADING" />
+
+      <template v-if="car && statuses !== Statuses.LOADING">
+        <Card>
+          <template #header>
+            <img class="border-round" :src="car.image" alt="car" />
+          </template>
+          <template #title>{{ car.name }}</template>
+          <template #subtitle>Model - {{ car.model }}</template>
+          <template #content>
+            <p>Year - {{ car.year }}</p>
+            <p>HP - {{ car.hp }}</p>
+          </template>
+        </Card>
+      </template>
+
+      <template v-if="!car && statuses !== Statuses.LOADING">
+        <p>No cars</p>
+      </template>
     </div>
+  </div>
 </template>
 
-
-
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -9,12 +9,14 @@ declare module 'vue' {
   export interface GlobalComponents {
     AppHeader: typeof import('./src/components/layout/AppHeader.vue')['default']
     Button: typeof import('primevue/button')['default']
+    Card: typeof import('primevue/card')['default']
     Debug: typeof import('./src/components/service/Debug.vue')['default']
     InputText: typeof import('primevue/inputtext')['default']
     Layout: typeof import('./src/components/layout/Layout.vue')['default']
     Message: typeof import('primevue/message')['default']
     NavBar: typeof import('./src/components/layout/NavBar.vue')['default']
     Password: typeof import('primevue/password')['default']
+    ProgressSpinner: typeof import('primevue/progressspinner')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

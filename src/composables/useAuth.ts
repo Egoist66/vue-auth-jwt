@@ -1,6 +1,6 @@
 import { useAuthStore } from "@/store/auth";
 import axios from "axios";
-import { ref } from "vue";
+import { computed, ref, toValue } from "vue";
 import { useStatuses } from "./common/useStatuses";
 import { delay } from "@/utils/delay";
 
@@ -26,7 +26,7 @@ export const useAuth = () => {
 
   const auth = async (type: 'signUp' | 'signIn') => {
 
-    const queryType = type === 'signUp' ? 'signUp' : 'signInWithPassword';
+    const queryType = computed(() => type === 'signUp' ? 'signUp' : 'signInWithPassword')
 
     try {
       setError(null);
@@ -34,7 +34,7 @@ export const useAuth = () => {
       await delay(1000);
 
       const { data } = await axios.post(
-        `https://identitytoolkit.googleapis.com/v1/accounts:${queryType}?key=${
+        `https://identitytoolkit.googleapis.com/v1/accounts:${toValue(queryType)}?key=${
           import.meta.env.VITE_FIREBASE_API_KEY
         }`,
         {

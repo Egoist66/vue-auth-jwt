@@ -1,3 +1,4 @@
+import { useLS } from '@/composables/common/useLS'
 import { createRouter, createWebHistory, type NavigationGuardNext, type RouteLocationNormalizedGeneric, type RouteLocationNormalized } from 'vue-router'
 
 /**
@@ -9,6 +10,9 @@ import { createRouter, createWebHistory, type NavigationGuardNext, type RouteLoc
  * @param {NavigationGuardNext} next - The next navigation guard.
  * @return {Object} An object with the redirect path if the user is not authenticated.
  */
+
+
+const {get, exist} = useLS()
 const validateRoutes = (
   to: RouteLocationNormalizedGeneric, 
   from: RouteLocationNormalized, 
@@ -17,21 +21,20 @@ const validateRoutes = (
 
   document.title = `${to.meta.title as string }`
 
-//   if(localStorage.getItem('user_id') && to.path === '/auth') {
-//     next({name: 'home'})
+  if(get<string>('user_id') && to.path === '/signup') {
+    next({name: 'home'})
    
-//   }
+  } else if(!exist('user_id') && to.path !== '/signin' && to.path !== '/signup') {
+    next({name: 'signin'})
 
-//   if(!localStorage.getItem('user_id') && to.path !== '/auth') {
-//     next({name: 'auth'})
-//   }
+  } else {
+    next()
 
-  next()
-  
-
+  }
 
 
 }
+
 
 
 const router = createRouter({
@@ -42,6 +45,7 @@ const router = createRouter({
       name: 'home',
       alias: '/home',
       meta: {
+        requiresAuth: true,
         title: 'Home'
       },
       component: () => import('@/pages/Home.vue')
@@ -68,6 +72,7 @@ const router = createRouter({
       path: '/cars',
       name: 'cars',
       meta: {
+        requiresAuth: true,
         title: 'Cars'
       },
       component: () => import('@/pages/Cars.vue')
