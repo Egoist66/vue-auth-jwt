@@ -25,7 +25,7 @@ const app = createApp(App);
 
 
 
-const wathStorePlugin = watchStorage(['user_id'], [null], async () => await router.replace({name: 'signin'}))()
+const wathStorePlugin = watchStorage(['user_creds'], [null], async () => await router.replace({name: 'signin'}))()
 const themePlugin = setTheme('aura-light')('indigo')
 
 

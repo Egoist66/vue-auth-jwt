@@ -22,9 +22,9 @@ export const watchStorage = (
        * @param {App} app - The Vue app instance.
        * @return {void}
        */
-      install(app: App) {
+      install(app: App): void {
         window.addEventListener("storage", async (e) => {
-          console.log(e);
+          //console.log(e);
 
           keys.forEach((key, i) => {
             if (e.key === key) {

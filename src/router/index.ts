@@ -1,4 +1,5 @@
-import { useLS } from '@/composables/common/useLS'
+import { useAuthStore } from '@/store/auth'
+import { storeToRefs } from 'pinia'
 import { createRouter, createWebHistory, type NavigationGuardNext, type RouteLocationNormalizedGeneric, type RouteLocationNormalized } from 'vue-router'
 
 /**
@@ -12,19 +13,20 @@ import { createRouter, createWebHistory, type NavigationGuardNext, type RouteLoc
  */
 
 
-const {get, exist} = useLS()
 const validateRoutes = (
   to: RouteLocationNormalizedGeneric, 
   from: RouteLocationNormalized, 
   next: NavigationGuardNext
 ) => {
 
-  document.title = `${to.meta.title as string }`
+  const {userData} = storeToRefs(useAuthStore())
 
-  if(get<string>('user_id') && to.path === '/signup') {
+  document.title = to.meta.title as string 
+
+  if(userData.value?.userId && to.path === '/signup') {
     next({name: 'home'})
    
-  } else if(!exist('user_id') && to.path !== '/signin' && to.path !== '/signup') {
+  } else if(!userData.value?.userId && to.meta.requiresAuth) {
     next({name: 'signin'})
 
   } else {

@@ -4,7 +4,7 @@ import { ref } from 'vue';
 import { useRouter } from "vue-router";
 
 
-type UserData = {
+export type UserData = {
     email: string,
     accessToken: string,
     userId: string,
@@ -14,23 +14,32 @@ type UserData = {
 export const useAuthStore = defineStore('auth', () => {
 
     const userData = ref<UserData | null>(null)
-    const {set} = useLS()
+    const {set, remove} = useLS()
     const router = useRouter()
 
     const setUserData = async (data: UserData) => {
       
         userData.value = data
-        set('user_id', userData.value.userId)
-        set('access_token', userData.value.accessToken)
-
+        set('user_creds', {
+            refreshToken: userData.value.refreshToken,
+            accessToken: userData.value.accessToken,
+            userId: userData.value.userId,
+            expiresIn: userData.value.expiresIn
+        }) 
         await router.replace({name: 'home'})
 
         
     }
 
+    const destroyUserData = async () => {
+        userData.value = null
+        remove('user_creds')
 
+        await router.replace({name: 'signin'})
+    }
     return {
         setUserData,
+        destroyUserData,
         userData
     }
 

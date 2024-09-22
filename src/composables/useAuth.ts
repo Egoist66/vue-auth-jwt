@@ -3,6 +3,8 @@ import axios from "axios";
 import { computed, ref, toValue } from "vue";
 import { useStatuses } from "./common/useStatuses";
 import { delay } from "@/utils/delay";
+import { useLS } from "./common/useLS";
+import { storeToRefs } from "pinia";
 
 /**
  * A hook for handling user sign up functionality.
@@ -13,7 +15,9 @@ export const useAuth = () => {
   const email = ref<string>("");
   const password = ref<string>("");
 
-  const { setUserData } = useAuthStore();
+  const { setUserData} = useAuthStore();
+  const {userData} = storeToRefs(useAuthStore())
+  const {exist, get} = useLS()
   const { setLoading, statuses, error, setError, resetStatus, setSuccess } =
     useStatuses();
 
@@ -82,10 +86,32 @@ export const useAuth = () => {
     }
    
   };
+
+
+  const authMe = () => {
+
+    try {
+      
+      if(exist('user_creds')){
+      
+        userData.value = get('user_creds')
+
+        
+      }
+
+
+    } 
+    catch (e: any) {
+      console.log(e)
+    }
+   
+
+  }
   return {
     email,
     password,
     auth,
+    authMe,
     error,
     statuses,
   };
