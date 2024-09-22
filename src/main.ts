@@ -1,6 +1,6 @@
 
 import 'primevue/resources/primevue.min.css'
-import '/node_modules/primeflex/primeflex.css'
+import 'primeflex/primeflex.css'
 import 'primeicons/primeicons.css'
 import './assets/main.scss'
 
