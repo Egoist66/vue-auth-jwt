@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { Statuses, useStatuses } from "@/composables/common/useStatuses";
-import { useAuthStore } from "@/store/auth";
 import { delay } from "@/utils/delay";
 import axios from "axios";
 import { ref, onMounted } from "vue";
@@ -12,6 +11,8 @@ type Cars = {
   year: number;
   hp: number;
 };
+
+
 
 const {
     statuses, 
@@ -31,7 +32,7 @@ const getCar = async () => {
     await delay(1000);
 
     const { data } = await axios.get<Cars>(
-      "https://vue-auth-jwt-default-rtdb.europe-west1.firebasedatabase.app/cars.json"
+      `https://vue-auth-jwt-default-rtdb.europe-west1.firebasedatabase.app/cars.json`
     );
     if (data) {
       console.log(data);

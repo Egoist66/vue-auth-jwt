@@ -1,9 +1,7 @@
 
-import 'primevue/resources/primevue.min.css'  
+import 'primevue/resources/primevue.min.css'
 import '/node_modules/primeflex/primeflex.css'
-
 import 'primeicons/primeicons.css'
-
 import './assets/main.scss'
 
 
@@ -17,29 +15,27 @@ import { initFireBaseApp } from './service/firebase.config'
 import { welcomePlugin } from './plugins/welcome'
 import PrimeVue from 'primevue/config';
 import { setTheme } from './plugins/theme'
-import { useLS } from './composables/common/useLS'
+import { watchStorage } from './plugins/watchStorage'
+import { globalApiIntercerptor } from './plugins/api.interceptors'
 
 
 
 export const fireBaseInst = initFireBaseApp();
-const {get} = useLS()
-
-
 const app = createApp(App);
 
 
-app.use(createPinia())
-app.use(PrimeVue, {
-    ripple: true,
-});
-app.use(
-    setTheme('aura-light')('indigo')
-)
 
-app.use(router)
+const wathStorePlugin = watchStorage(['user_id'], [null], async () => await router.replace({name: 'signin'}))()
+const themePlugin = setTheme('aura-light')('indigo')
+
+
 app.use(welcomePlugin)
-
-
+app.use(router)
+app.use(createPinia())
+app.use(PrimeVue, {ripple: true});
+app.use(themePlugin)
+app.use(wathStorePlugin)
+app.use(globalApiIntercerptor)
 
 app.mount('#app')
 

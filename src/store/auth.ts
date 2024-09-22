@@ -1,5 +1,4 @@
 import { useLS } from "@/composables/common/useLS";
-import axios from "axios";
 import { defineStore } from "pinia";
 import { ref } from 'vue';
 import { useRouter } from "vue-router";
@@ -21,7 +20,8 @@ export const useAuthStore = defineStore('auth', () => {
     const setUserData = async (data: UserData) => {
       
         userData.value = data
-        set('user_id', data.userId)
+        set('user_id', userData.value.userId)
+        set('access_token', userData.value.accessToken)
 
         await router.replace({name: 'home'})
 
