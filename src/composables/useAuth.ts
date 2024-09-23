@@ -5,6 +5,7 @@ import { useStatuses } from "./common/useStatuses";
 import { delay } from "@/utils/delay";
 import { useLS } from "./common/useLS";
 import { storeToRefs } from "pinia";
+import { axiosAuthInst } from "@/plugins/api.interceptors";
 
 /**
  * A hook for handling user sign up functionality.
@@ -37,8 +38,8 @@ export const useAuth = () => {
       setLoading();
       await delay(1000);
 
-      const { data } = await axios.post(
-        `https://identitytoolkit.googleapis.com/v1/accounts:${toValue(queryType)}?key=${
+      const { data } = await axiosAuthInst.post(
+        `v1/accounts:${toValue(queryType)}?key=${
           import.meta.env.VITE_FIREBASE_API_KEY
         }`,
         {

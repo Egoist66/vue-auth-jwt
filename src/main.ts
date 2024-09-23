@@ -14,9 +14,9 @@ import router from './router'
 import { initFireBaseApp } from './service/firebase.config'
 import { welcomePlugin } from './plugins/welcome'
 import PrimeVue from 'primevue/config';
-import { setTheme } from './plugins/theme'
 import { watchStorage } from './plugins/watchStorage'
 import { globalApiIntercerptor } from './plugins/api.interceptors'
+import { useAuthStore } from './store/auth'
 
 
 
@@ -25,7 +25,10 @@ const app = createApp(App);
 
 
 
-const wathStorePlugin = watchStorage(['user_creds'], [null], async () => await router.replace({name: 'signin'}))()
+const wathStorePlugin = watchStorage(['user_creds'], [null], async () => {
+    await router.replace({name: 'signin'})
+    useAuthStore().destroyUserData()
+})()
 
 
 app.use(welcomePlugin)
