@@ -28,9 +28,8 @@ export const watchStorage = (
 
           keys.forEach((key, i) => {
             if (e.key === key && e.newValue === value[i]) {
-              if (e.newValue === value[i]) {
                 callback();
-              }
+
             }
           });
         });
