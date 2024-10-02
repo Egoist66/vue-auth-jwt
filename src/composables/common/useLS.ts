@@ -45,20 +45,11 @@ export const useLS = (): {
     };
 
     const empty = (prop: any) => {
-        if(!Object.keys(JSON.parse(ls[prop])).length) {
-            return true
-        }
-        else {
-            return false
-        }
+        return !Object.keys(JSON.parse(ls[prop])).length;
     }
 
     const exist = (key: string) => {
-        if (key in ls) {
-            return true
-        } else {
-            return false
-        }
+        return key in ls;
     }
 
 

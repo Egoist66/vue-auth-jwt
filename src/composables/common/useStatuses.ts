@@ -8,18 +8,19 @@ export enum Statuses {
 }
 
 
+
 /**
- * Returns an object with a reactive `statuses` property and methods to set and reset the status.
+ * A hook for managing a simple state machine.
  *
  * @return {{
  *   statuses: Ref<Statuses>,
- *   error: Ref<string | null>,
+ *   error: Ref<any>,
  *   setStatus: (status: Statuses) => void,
  *   setSuccess: () => void,
- *   setError: (error: string) => void,
+ *   setError: (error: any) => void,
  *   setLoading: () => void,
  *   resetStatus: () => void
- * }} An object with the `statuses` reactive property and methods to set and reset the status.
+ * }} An object containing refs to the current status and error, and methods to set the status to success, error, loading, or reset it.
  */
 export const useStatuses = () => {
     const statuses = ref<Statuses>(Statuses.IDLE)

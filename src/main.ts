@@ -1,4 +1,3 @@
-
 import 'primevue/resources/primevue.min.css'
 import 'primeflex/primeflex.css'
 import 'primeicons/primeicons.css'
@@ -6,25 +5,22 @@ import './assets/main.scss'
 
 
 import 'primevue/resources/themes/aura-light-indigo/theme.css'
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+import {createApp} from 'vue'
+import {createPinia} from 'pinia'
 
 // @ts-ignore
 import App from './App.vue'
 import router from './router'
 //import { initFireBaseApp } from './service/firebase.config'
-import { welcomePlugin } from './plugins/welcome'
+import {welcomePlugin} from './plugins/welcome'
 import PrimeVue from 'primevue/config';
-import { watchStorage } from './plugins/watchStorage'
-import { globalApiIntercerptor } from './plugins/api.interceptors'
-import { useAuthStore } from './store/auth'
-
+import {watchStorage} from './plugins/watchStorage'
+import {globalApiIntercerptor} from './plugins/api.interceptors'
+import {useAuthStore} from './store/auth'
 
 
 //export const fireBaseInst = initFireBaseApp();
 const app = createApp(App);
-
-
 
 const watchStorePlugin = watchStorage(['user_creds'], [null], async () => {
     await router.replace({name: 'signin'})
