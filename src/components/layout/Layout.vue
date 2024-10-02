@@ -18,7 +18,7 @@
 
         <main>
             <div class="container">
-                <slot name="deafault"/>
+                <slot name="default"/>
             </div>
         </main>
 

@@ -21,7 +21,7 @@ export const axiosAuthInst = axios.create({
 
 const apiKey = import.meta.env.VITE_FIREBASE_API_KEY
 
-export const globalApiIntercerptor = {
+export const globalApiInterceptor = {
 /**
  * Installs the global interceptor for axios. This interceptor is used to
  * append the `auth` parameter to all requests, which contains the access token
@@ -67,13 +67,13 @@ export const globalApiIntercerptor = {
                     refresh_token: get('user_creds')?.refreshToken
                 })
 
-                setUserData(data)
+                await setUserData(data)
             }
             catch (e) {
                 console.log(e)
 
                 remove('user_creds')
-                destroyUserData()
+                await destroyUserData()
                 await router.replace({name: 'signin'})
             }
         }

@@ -26,7 +26,7 @@ onMounted(() => {
     </template> 
 
   
-    <template #deafault>
+    <template #default>
 
 
       <RouterView />

@@ -15,7 +15,7 @@ import router from './router'
 import {welcomePlugin} from './plugins/welcome'
 import PrimeVue from 'primevue/config';
 import {watchStorage} from './plugins/watchStorage'
-import {globalApiIntercerptor} from './plugins/api.interceptors'
+import {globalApiInterceptor} from './plugins/api.interceptors'
 import {useAuthStore} from './store/auth'
 
 
@@ -33,7 +33,7 @@ app.use(router)
 app.use(createPinia())
 app.use(PrimeVue, {ripple: true});
 app.use(watchStorePlugin)
-app.use(globalApiIntercerptor)
+app.use(globalApiInterceptor)
 
 app.mount('#app')
 
