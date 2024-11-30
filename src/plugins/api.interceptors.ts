@@ -39,10 +39,7 @@ export const globalApiInterceptor = {
     const { setUserData, destroyUserData } = useAuthStore();
 
     axios.interceptors.request.use(async (config) => {
-      if (
-        !config.url?.includes("signInWithPassword") &&
-        !config.url?.includes("signUp")
-      ) {
+      if (!config.url?.includes("signInWithPassword") && !config.url?.includes("signUp")) {
         if (userData.value) {
           params.append("auth", userData.value.accessToken);
         }

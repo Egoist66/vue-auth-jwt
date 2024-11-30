@@ -5,7 +5,7 @@ import './assets/main.scss'
 
 
 import 'primevue/resources/themes/aura-light-indigo/theme.css'
-import {createApp} from 'vue'
+import {createApp, h} from 'vue'
 import {createPinia} from 'pinia'
 
 // @ts-ignore
@@ -37,3 +37,5 @@ app.use(globalApiInterceptor)
 
 app.mount('#app')
 
+
+console.log(app);

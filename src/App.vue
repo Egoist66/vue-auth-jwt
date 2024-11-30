@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="tsx">
 import Layout from '@/components/layout/Layout.vue';
 import AppHeader from './components/layout/AppHeader.vue';
 import {onMounted } from 'vue';
@@ -16,9 +16,12 @@ onMounted(() => {
 <template>
 
 
-  <Layout>
+  <Layout  >
+
+    
 
     <template #header>
+
 
       <AppHeader />
 

@@ -8,6 +8,7 @@ const { email, password, statuses, error, auth } = useAuth();
 const buttonRule = computed(
   () => !email.value || !password.value || statuses.value === Statuses.LOADING
 );
+
 </script>
 
 <template>

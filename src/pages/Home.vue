@@ -1,16 +1,13 @@
 <script setup lang="ts">
-import AppHeader from '@/components/layout/AppHeader.vue';
-
-
 </script>
 
 <template>
-  <h1>Home</h1>
-
-
+  
   <div>
 
-   
+    <h1>Home</h1>
+
+
   </div>
 </template>
 

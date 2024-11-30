@@ -36,7 +36,7 @@ const getCar = async () => {
     );
     if (data) {
       console.log(data);
-      car.value = data;
+      car.value = data as Cars;
       setSuccess();
     }
   } 
